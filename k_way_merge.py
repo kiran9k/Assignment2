@@ -80,6 +80,8 @@ def k_way(a):
     e=[]
     if(a==[]):
        pass
+    elif(isinstance(a[0],int)==True):
+        e.extend(a)
     else:               
         N=0
         b=append_initial_elements(a,c,d,len(a))
@@ -104,19 +106,22 @@ def k_way(a):
 if(__name__=='__main__'):
     
     e=[]
-    a=[[],[],[],[],[],[]]
-    q=[]
     for j in range(0,100):
         q=[]
-        for i in range (len(a)):
-            a[i]=random.sample(range(-20,60),random.randint(0,20))
+        a=[]
+        for i in range (random.randint(0,5)):
+            a.append([])
+            a[i].extend(random.sample(range(-20,60),random.randint(0,20)))
             a[i].sort()
         #a=[1,2,3,4,5,6,7]
-        print a
+        print "input =",a
 
-        for i in range(len(a)):
-            q.extend(a[i])
-        q.sort()                 
+        if(a<>[] and isinstance(a[0],int)==False):
+            for i in range(len(a)):
+                q.extend(a[i])
+        else:
+            q.extend(a)
+        q.sort()                             
        
         e=k_way(a)
         #print "\n\nthe final sorted array:\n"
